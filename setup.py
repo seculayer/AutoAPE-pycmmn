@@ -64,7 +64,9 @@ class APEPythonSetup(object):
             author="Jin Kim",
             author_email="jin.kim@seculayer.com",
             packages=self.get_packages(),
-            package_dir={},
+            package_dir={
+                "resources": "resources"
+            },
             python_requires='>3.7',
             package_data={
                 self.module_nm: self.get_additional_file()
