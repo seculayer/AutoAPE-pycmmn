@@ -6,14 +6,13 @@ import json
 from typing import List, Dict
 import numpy as np
 
-from pycmmn.Singleton import Singleton
 from pycmmn.sftp.PySFTPClient import PySFTPClient
 from pycmmn.utils.ImageUtils import ImageUtils
 from pycmmn.logger.MPLogger import MPLogger
 from pycmmn.Constants import Constants
 
 
-class SFTPClientManager(object, metaclass=Singleton):
+class SFTPClientManager(object):
     # class : SFTPClientManager
     def __init__(self, service: str, username: str, password: str, logger: MPLogger.getLogger):
         self.logger = logger
