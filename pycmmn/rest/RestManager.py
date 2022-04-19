@@ -171,7 +171,7 @@ class RestManager(object, metaclass=Singleton):
 
         obj = {
             "learn_hist_no": hist_no,
-            "memory": {"percent": memory_usage},
+            "memory": {"percent": memory_usage * 100},
             "cpu": {"percent": cpu_usage},
             "gpu": {}
         }
