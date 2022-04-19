@@ -177,11 +177,17 @@ class RestManager(object, metaclass=Singleton):
         }
 
         gpu_list = GPUtil.getGPUs()
-        for gpu in gpu_list:
-            obj["gpu"][gpu.id] = {}
-            obj["gpu"][gpu.id]["memory"] = gpu.memoryUtil * 100
-            obj["gpu"][gpu.id]["percent"] = gpu.load * 100
-            obj["gpu"][gpu.id]["temperature"] = gpu.temperature
+        if len(gpu_list) == 0:
+            obj["gpu"]["0"] = {}
+            obj["gpu"]["0"]["memory"] = 0
+            obj["gpu"]["0"]["percent"] = 0
+            obj["gpu"]["0"]["temperature"] = 0
+        else:
+            for gpu in gpu_list:
+                obj["gpu"][gpu.id] = {}
+                obj["gpu"][gpu.id]["memory"] = gpu.memoryUtil * 100
+                obj["gpu"][gpu.id]["percent"] = gpu.load * 100
+                obj["gpu"][gpu.id]["temperature"] = gpu.temperature
 
         rst_sttus = RestManager.post(url=url, data=obj, logger=logger)
 
