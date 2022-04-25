@@ -1,9 +1,11 @@
 [tool.poetry]
 name = "pycmmn"
 version = "1.0.0"
-description = """SecuLayer Inc. AutoML
-Project Module : PYCMMN"""
-authors = ["Your Name <you@example.com>"]
+description = """
+    SecuLayer Inc. AutoML
+    Project Module : PYCMMN
+"""
+authors = ["Jin Kim <jin.kim@seculayer.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7, <3.11"
