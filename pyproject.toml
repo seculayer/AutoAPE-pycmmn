@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "pycmmn"
+version = "1.0.0"
+description = """SecuLayer Inc. AutoML
+Project Module : PYCMMN"""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7, <3.11"
+numpy = "^1.21"
+ujson = "^5.2.0"
+paramiko = "^2.10.3"
+pycryptodome = "^3.14.1"
+opencv-python-headless = "^4.5.5"
+scp = "^0.14.4"
+requests = "^2.27.1"
+psutil = "^5.9.0"
+GPUtil = "^1.4.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22"
+isort = "^5.10.1"
+pytest = "^7.1.1"
+mypy = "^0.942"
+hypothesis = "^6.43.3"
+pytest-xdist = { extras = ["psutil"], version = "^2.5.0" }
+pytest-cov = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --failed-first -n auto"
+# addopts = "-ra -q --failed-first"
+testpaths = ["tests"]
+# pythonpath = 'src/'
+
+[tool.pylint.messages_control]
+disable = "C0330, C0326"
+
+[tool.pylint.format]
+max-line-length = "88"
