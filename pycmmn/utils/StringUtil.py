@@ -5,7 +5,6 @@
 
 
 class StringUtil(object):
-
     @staticmethod
     def get_int(data) -> int:
         try:
