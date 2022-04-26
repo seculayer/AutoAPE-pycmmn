@@ -35,14 +35,3 @@ class AES256(object):
         aes = AES.new(self._key[: self._BLOCK_SIZE], AES.MODE_CBC, self._iv)
         dec = aes.decrypt(b64_dec)
         return unpad(dec, self._BLOCK_SIZE).decode("utf-8")
-
-
-if __name__ == "__main__":
-    import sys
-
-    aes = AES256()
-    _pt = sys.argv[1]
-    _et = aes.encrypt(plane_text=_pt)
-    print(_et)
-    _dt = aes.decrypt(_et)
-    print(_dt)
