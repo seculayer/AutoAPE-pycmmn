@@ -87,6 +87,19 @@ class RestManager(object, metaclass=Singleton):
         return rst_sttus
 
     @staticmethod
+    def update_xai_status_cd(rest_url_root: str, logger: MPLogger.getLogger, status: str, job_key: str, task_idx: str, msg: str) -> rq.Response:
+        url = rest_url_root + Common.REST_URL_DICT.get("xai_status_update", "")
+        hist_no = job_key.split("_")[-1]
+        obj = {
+            "sttus_cd": status,
+            "hist_no": hist_no,
+            "task_idx": task_idx,
+        }
+        rst_sttus = RestManager.post(url=url, data=obj, logger=logger)
+
+        return rst_sttus
+
+    @staticmethod
     def update_eval_result(rest_url_root: str, logger: MPLogger.getLogger, job_key: str, task_idx: str, rst: Union[dict, list]) -> rq.Response:
         url = rest_url_root + Common.REST_URL_DICT.get("eval_result_update", "")
         hist_no = job_key.split("_")[-1]
@@ -201,6 +214,22 @@ class RestManager(object, metaclass=Singleton):
 
         obj = {
             "infr_hist_no": hist_no,
+            "progress_rate": str(prograss_rate),
+            "mode": mode
+        }
+
+        rst_sttus = RestManager.post(url=url, data=obj, logger=logger)
+
+        return rst_sttus
+
+    @staticmethod
+    def send_xai_progress(rest_url_root: str, logger: MPLogger.getLogger, job_key: str, prograss_rate: float, mode="update"):
+        url = rest_url_root + Common.REST_URL_DICT.get("xai_progress", "")
+
+        hist_no = job_key.split("_")[-1]
+
+        obj = {
+            "xai_hist_no": hist_no,
             "progress_rate": str(prograss_rate),
             "mode": mode
         }

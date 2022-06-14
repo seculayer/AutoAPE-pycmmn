@@ -13,5 +13,7 @@
     "get_infr_status_cd": "/mrms/get_infr_status_cd",
     "infr_status_update": "/mrms/status_update/inference",
     "infr_time_update": "/mrms/infr_time_update",
-    "infr_progress": "/mrms/inference_progress_rate"
+    "infr_progress": "/mrms/inference_progress_rate",
+    "xai_progress": "/mrms/xai_progress_rate",
+    "xai_status_update": "/mrms/status_update/xai"
 }
