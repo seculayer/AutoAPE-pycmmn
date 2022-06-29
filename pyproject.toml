@@ -28,6 +28,7 @@ mypy = "^0.942"
 hypothesis = "^6.43.3"
 pytest-xdist = { extras = ["psutil"], version = "^2.5.0" }
 pytest-cov = "^3.0.0"
+prospector = {extras = ["with_mypy", "with_bandit", "with_vulture"], version = "^1.7.7"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -39,7 +40,7 @@ profile = "black"
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-addopts = "-ra -q --failed-first -n auto -p no:hypothesispytest"
+addopts = "-ra -q --failed-first -n auto -p pytest_cov"
 # addopts = "-ra -q --failed-first"
 testpaths = ["tests"]
 
