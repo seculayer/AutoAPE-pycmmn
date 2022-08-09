@@ -94,6 +94,12 @@ class SFTPClientManager(object):
     def scp_from_storage(self, remote_path, local_path):
         self.sftp_client.scp_from_storage(remote_path, local_path)
 
+    def get_file_list(self, dir_path):
+        return self.sftp_client.get_file_list(dir_path)
+
+    def delete_file(self, file_path):
+        self.delete_file(file_path)
+
 
 if __name__ == '__main__':
     sm = SFTPClientManager("10.1.35.118:22", "Kmw/y3YWiiO7gJ/zqMvCuw==", "jTf6XrqcYX1SAhv9JUPq+w==")

@@ -7,3 +7,4 @@ scp == 0.14.2
 requests == 2.27.1
 psutil == 5.8.0
 GPUtil == 1.4.0
+six == 1.16.0

@@ -15,7 +15,7 @@ class PySFTPClient(object):
         try:
             self.transport = paramiko.Transport((host, port))
             self.transport.connect(username=AES256().decrypt(username), password=AES256().decrypt(password))
-            self.sftp = paramiko.SFTPClient.from_transport(self.transport)
+            self.sftp: paramiko.SFTPClient = paramiko.SFTPClient.from_transport(self.transport)
         except paramiko.ssh_exception.AuthenticationException:
             raise PySFTPAuthException
 
@@ -35,6 +35,12 @@ class PySFTPClient(object):
             return True
         except FileNotFoundError:
             return False
+
+    def get_file_list(self, dir_path) -> list:
+        return self.sftp.listdir(dir_path)
+
+    def delete_file(self, file_path):
+        self.sftp.remove(file_path)
 
     def mkdir(self, dir_path):
         self.sftp.mkdir(dir_path)
