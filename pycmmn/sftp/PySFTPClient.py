@@ -17,6 +17,7 @@ class PySFTPClient(object):
             self.transport.connect(username=AES256().decrypt(username), password=AES256().decrypt(password))
             self.sftp: paramiko.SFTPClient = paramiko.SFTPClient.from_transport(self.transport)
         except paramiko.ssh_exception.AuthenticationException:
+            print(AES256().decrypt(username), AES256().decrypt(password))
             raise PySFTPAuthException
 
     def open(self, filename, option="r",) -> paramiko.SFTPFile:
