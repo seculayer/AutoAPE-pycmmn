@@ -1,10 +1,7 @@
 [tool.poetry]
 name = "pycmmn"
 version = "1.0.0"
-description = """
-    SecuLayer Inc. AutoML
-    Project Module : PYCMMN
-"""
+description = "AutoML: Python Common Module"
 authors = ["Jin Kim <jin.kim@seculayer.com>"]
 packages = [{ include = "pycmmn" }, { include = "pycmmn/py.typed" }]
 
