@@ -15,5 +15,8 @@
     "infr_time_update": "/mrms/infr_time_update",
     "infr_progress": "/mrms/inference_progress_rate",
     "xai_progress": "/mrms/xai_progress_rate",
-    "xai_status_update": "/mrms/status_update/xai"
+    "xai_status_update": "/mrms/status_update/xai",
+
+    "get_learn_hist_as_detect_hist": "/mims/get_learn_hist_no",
+    "get_result_fields": "/mims/get_result_fields"
 }
