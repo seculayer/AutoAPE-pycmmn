@@ -10,6 +10,7 @@
     "time_update": "/mrms/time_update",
     "model_resources": "/mrms/model_resources",
     "get_project_id": "/mrms/get_project_id",
+    "get_project_tag": "/mrms/get_project_tag",
     "get_infr_status_cd": "/mrms/get_infr_status_cd",
     "infr_status_update": "/mrms/status_update/inference",
     "infr_time_update": "/mrms/infr_time_update",

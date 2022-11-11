@@ -71,6 +71,12 @@ class RestManager(object, metaclass=Singleton):
         return RestManager.get(f"{url}?hist_no={hist_no}", logger)
 
     @staticmethod
+    def get_project_tag(rest_url_root: str, logger: MPLogger.getLogger, job_key: str) -> str:
+        url = rest_url_root + Common.REST_URL_DICT.get("get_project_tag", "")
+        hist_no = job_key.split("_")[-1]
+        return RestManager.get(f"{url}?hist_no={hist_no}", logger)
+
+    @staticmethod
     def get_learn_hist_as_detect_hist(rest_url_root: str, logger: MPLogger.getLogger, detect_hist_no: str):
         url = rest_url_root + Common.REST_URL_DICT.get("get_learn_hist_as_detect_hist", "")
         return RestManager.get(f"{url}?detect_hist_no={detect_hist_no}", logger)
