@@ -58,7 +58,11 @@ class SFTPClientManager(object):
                     break
                 else:
                     if dataset_format == Constants.DATASET_FORMAT_TEXT:
-                        yield json.loads(data)
+                        try:
+                            yield json.loads(data)
+                        except json.decoder.JSONDecodeError as e:
+                            self.logger.error(f"data line : {data}")
+                            self.logger.error(e, exc_info=True)
                     elif dataset_format == Constants.DATASET_FORMAT_IMAGE:
                         file_path = filename.rsplit('/', 1)[0]
                         json_data: Dict = json.loads(data)

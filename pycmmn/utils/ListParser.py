@@ -3,17 +3,16 @@
 # e-mail : jin.kim@seculayer.com
 # Powered by Seculayer © 2022 AI Service Model Team, R&D Center.
 from typing import List
+import json
 
 
 class ListParser(object):
     @classmethod
     def parse(cls, data: str) -> List:
-        if data[0] == "[":
-            if data[1] == "\"":
-                return cls._str_json(data)
-        else:
+        try:
+            return json.loads(data)
+        except json.decoder.JSONDecodeError:
             return data.split(",")
-        return [data]
 
     @staticmethod
     def _str_json(data: str) -> List:
@@ -73,7 +72,7 @@ if __name__ == '__main__':
             "log_dt": "20221122105317", "mal_dga": "N", "leven_score": "0.73", "tag_ai_trfic": "N",
             "vtdwhois_expiry_date": "2023-04-09T19:15:50Z"}
 
-    import json
     for _ in ListParser.parse(_data.get("vtdlast_analysis_stats")):
         print(_, json.loads(_))
     print(ListParser.parse(_data.get("vtdlast_dns_records_TTL")))
+
