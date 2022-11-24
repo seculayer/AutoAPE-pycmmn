@@ -10,6 +10,8 @@ class ListParser(object):
     @classmethod
     def parse(cls, data: str) -> List:
         try:
+            if isinstance(data, list):
+                return data
             return json.loads(data)
         except json.decoder.JSONDecodeError:
             return data.split(",")
