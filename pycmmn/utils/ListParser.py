@@ -3,7 +3,7 @@
 # e-mail : jin.kim@seculayer.com
 # Powered by Seculayer © 2022 AI Service Model Team, R&D Center.
 from typing import List
-import json
+from pycmmn.utils.JSONUtils import JSONUtils
 
 
 class ListParser(object):
@@ -12,8 +12,8 @@ class ListParser(object):
         try:
             if isinstance(data, list):
                 return data
-            return json.loads(data)
-        except json.decoder.JSONDecodeError:
+            return JSONUtils.ujson_load(data)
+        except Exception as e:
             return data.split(",")
 
     @staticmethod
