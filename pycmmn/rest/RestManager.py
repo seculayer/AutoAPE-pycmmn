@@ -87,6 +87,11 @@ class RestManager(object, metaclass=Singleton):
         return RestManager.get(f"{url}?detect_hist_no={detect_hist_no}", logger)
 
     @staticmethod
+    def get_detect_model_threashold(rest_url_root: str, logger: MPLogger.getLogger, detect_hist_no: str) -> str:
+        url = rest_url_root + Common.REST_URL_DICT.get("get_detect_model_threashold", "")
+        return RestManager.get(f"{url}?detect_hist_no={detect_hist_no}", logger)
+
+    @staticmethod
     def update_status_cd(rest_url_root: str, logger: MPLogger.getLogger, job_type: str, status: str, job_key: str, task_idx: str, msg: str) -> rq.Response:
         if job_type == Constants.JOB_TYPE_LEARN:
             url = rest_url_root + Common.REST_URL_DICT.get("learn_status_update", "")

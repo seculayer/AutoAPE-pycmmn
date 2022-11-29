@@ -19,5 +19,6 @@
     "xai_status_update": "/mrms/status_update/xai",
 
     "get_learn_hist_as_detect_hist": "/mims/get_learn_hist_no",
-    "get_result_fields": "/mims/get_result_fields"
+    "get_result_fields": "/mims/get_result_fields",
+    "get_detect_model_threashold": "/mims/get_detect_model_threashold"
 }
