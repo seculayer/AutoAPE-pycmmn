@@ -121,7 +121,8 @@ class RestManager(object, metaclass=Singleton):
         return rst_sttus
 
     @staticmethod
-    def update_eval_result(rest_url_root: str, logger: MPLogger.getLogger, job_key: str, task_idx: str, rst: Union[dict, list]) -> rq.Response:
+    def update_eval_result(rest_url_root: str, logger: MPLogger.getLogger, job_key: str, task_idx: str,
+                           rst: Union[dict, list]) -> rq.Response:
         url = rest_url_root + Common.REST_URL_DICT.get("eval_result_update", "")
         hist_no = job_key.split("_")[-1]
         obj = {
