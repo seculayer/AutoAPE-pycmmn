@@ -3,7 +3,6 @@ ujson == 1.35
 paramiko == 2.8.0
 pycryptodome == 3.11.0
 opencv-python-headless >= 4.5.4.60
-scp == 0.14.2
 requests == 2.27.1
 psutil == 5.8.0
 GPUtil == 1.4.0
