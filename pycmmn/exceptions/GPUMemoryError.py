@@ -5,8 +5,7 @@
 
 
 class GPUMemoryError(Exception):
-    CODE = "E0041"
-    MSG = "[APEFlow {}]".format(CODE)
+    CODE = "[ERR006]"
 
     def __str__(self):
-        return self.MSG + "GPU Memory Error"
+        return self.CODE + " GPU Out of Memory Error"

@@ -5,8 +5,7 @@
 
 
 class ParameterError(Exception):
-    CODE = "E0001"
-    MSG = "[APEFlow {}]".format(CODE)
+    CODE = "[ERR0008]"
 
     def __str__(self):
-        return self.MSG + " algorithm parameter invalid!"
+        return self.CODE + " Algorithm Parameter Invalid!"

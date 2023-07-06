@@ -5,14 +5,13 @@
 
 
 class VersionManagementError(Exception):
-    CODE = "E0003"
-    MSG = "[pycmmn {}]".format(CODE)
+    CODE = "[ERR0011]"
 
     def __init__(self):
         Exception.__init__(self)
 
     def __str__(self) -> str:
-        return self.MSG + " {}".format(type(self).__name__)
+        return self.CODE + " {}".format(type(self).__name__)
 
 
 if __name__ == '__main__':

@@ -20,8 +20,13 @@ class PySFTPClient(object):
             self.transport.connect(username=AES256().decrypt(username), password=AES256().decrypt(password))
             self.sftp: paramiko.SFTPClient = paramiko.SFTPClient.from_transport(self.transport)
         except paramiko.ssh_exception.AuthenticationException:
-            print(AES256().decrypt(username), AES256().decrypt(password))
-            raise PySFTPAuthException
+            info_dict = {
+                "host": host,
+                "port": port,
+                "username": username,
+                "password": password
+            }
+            raise PySFTPAuthException(info_dict)
 
     def open(self, filename, option="r",) -> paramiko.SFTPFile:
         return self.sftp.open(filename, option)
@@ -66,7 +71,10 @@ class PySFTPClient(object):
 
     def _scp_send_recursive(self, local_path, remote_path):
         is_dir = os.path.isdir(local_path)
-        curr_dir_name = local_path.rsplit('/', 1)[1]
+        if local_path.__contains__('/'):
+            curr_dir_name = local_path.rsplit('/', 1)[1]
+        else:
+            curr_dir_name = local_path
 
         if is_dir:
             self.mkdir(f"{remote_path}/{curr_dir_name}")
