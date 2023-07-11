@@ -16,3 +16,7 @@ class CV2Utils(object):
     @staticmethod
     def resize(img, size: Tuple):
         return cv2.resize(img, size, interpolation=cv2.INTER_AREA)
+
+    @staticmethod
+    def get_cv2() -> cv2:
+        return cv2
