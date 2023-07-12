@@ -68,7 +68,7 @@ class SFTPClientManager(object):
                         json_data: Dict = json.loads(data)
                         img_byte: bytes = self._read_image_binary(file_path, json_data)
                         img_data: np.array = ImageUtils.load(img_byte)
-                        img_data = img_data.tolist()
+                        # img_data = img_data.tolist()
 
                         json_data["image"] = img_data
                         yield json_data
