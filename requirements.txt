@@ -1,4 +1,4 @@
-numpy~=1.21.5
+numpy == 1.20
 ujson == 1.35
 paramiko == 2.8.0
 pycryptodome == 3.11.0
