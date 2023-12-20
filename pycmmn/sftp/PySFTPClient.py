@@ -35,6 +35,9 @@ class PySFTPClient(object):
         self.sftp.close()
         self.transport.close()
 
+    def stat(self, filename):
+        return self.sftp.stat(filename)
+
     def rename(self, src, dst):
         self.sftp.rename(src, dst)
 
@@ -99,11 +102,15 @@ class PySFTPClient(object):
 
 
 if __name__ == '__main__':
-    sftp_client = PySFTPClient("localhost", 22, "Kmw/y3YWiiO7gJ/zqMvCuw==", "jTf6XrqcYX1SAhv9JUPq+w==")
-    with sftp_client.open("/home/seculayer/temp.tmp", "w") as f:
-        f.write("test.1" + "\n")
+    # sftp_client = PySFTPClient("localhost", 22, "Kmw/y3YWiiO7gJ/zqMvCuw==", "jTf6XrqcYX1SAhv9JUPq+w==")
+    # with sftp_client.open("/home/seculayer/temp.tmp", "w") as f:
+    #     f.write("test.1" + "\n")
 
-    with sftp_client.open("/home/seculayer/temp.tmp", "r") as f:
-        for line in f.readlines():
-            print(line)
+    # with sftp_client.open("/home/seculayer/temp.tmp", "r") as f:
+        # for line in f.readlines():
+        #     print(line)
+
+    sftp_client = PySFTPClient("172.22.11.97", 30022, "R3/tyNizMl+CityTeieBEQ==", "jTf6XrqcYX1SAhv9JUPq+w==")
+    stat = sftp_client.stat("/home/autoAPE/temp")
+    print(stat.st_size)
     sftp_client.close()
