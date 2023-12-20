@@ -271,3 +271,8 @@ class RestManager(object, metaclass=Singleton):
     def set_time(rest_url_root: str, logger: MPLogger.getLogger, job_type, job_key, task_idx, start_or_end):
         if task_idx == "0":
             RestManager.update_time(rest_url_root, logger, job_type, job_key, start_or_end)
+
+    @staticmethod
+    def update_detect_status(rest_url_root: str, logger: MPLogger.getLogger, detect_hist_no, status):
+        url = rest_url_root + Common.REST_URL_DICT.get("detect_status_update", "")
+        return RestManager.get(f"{url}?detect_hist_no={detect_hist_no}&detect_status_cd={status}&use_yn=Y", logger)

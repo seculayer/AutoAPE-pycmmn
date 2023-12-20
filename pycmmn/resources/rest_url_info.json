@@ -20,5 +20,6 @@
 
     "get_learn_hist_as_detect_hist": "/mims/get_learn_hist_no",
     "get_result_fields": "/mims/get_result_fields",
-    "get_detect_model_threashold": "/mims/get_detect_model_threashold"
+    "get_detect_model_threashold": "/mims/get_detect_model_threashold",
+    "detect_status_update": "/mims/update_detect_status"
 }
