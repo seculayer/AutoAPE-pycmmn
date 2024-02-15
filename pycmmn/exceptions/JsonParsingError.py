@@ -4,8 +4,8 @@
 # Powered by Seculayer © 2021 Service Model Team, R&D Center.
 
 
-class EvaluationError(Exception):
-    CODE = "[ERR0005]"
+class JsonParsingError(Exception):
+    CODE = "[ERR0012]"
 
     def __str__(self):
-        return self.CODE + "ML Algorithm Evaluation ERROR!"
+        return self.CODE + " Json Parsing Error..."

@@ -12,7 +12,9 @@ class CalTimeDecorator:
         @wraps(func)
         def wrapper(_self, *args, **kwargs):
             start_time = datetime.now()
-            func(_self, *args, **kwargs)
+            rst = func(_self, *args, **kwargs)
             self.LOGGER.info("{} ran during [{}]".format(self.func_name, datetime.now() - start_time))
+
+            return rst
 
         return wrapper

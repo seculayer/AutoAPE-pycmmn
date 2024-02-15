@@ -1,10 +1,7 @@
 [tool.poetry]
 name = "pycmmn"
 version = "1.0.0"
-description = """
-    SecuLayer Inc. AutoML
-    Project Module : PYCMMN
-"""
+description = "AutoML: Python Common Module"
 authors = ["Jin Kim <jin.kim@seculayer.com>"]
 packages = [{ include = "pycmmn" }, { include = "pycmmn/py.typed" }]
 
@@ -15,7 +12,6 @@ ujson = "^5.2.0"
 paramiko = "^2.10.3"
 pycryptodome = "^3.14.1"
 opencv-python-headless = "^4.5.5"
-scp = "^0.14.4"
 requests = "^2.27.1"
 psutil = "^5.9.0"
 GPUtil = "^1.4.0"

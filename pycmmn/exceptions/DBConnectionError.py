@@ -4,13 +4,12 @@
 # Powered by Seculayer © 2021 Service Model Team, R&D Center.
 
 
-class DBConfigException(Exception):
-    CODE = "E0002"
-    MSG = "[pycmmn {}]".format(CODE)
+class DBConnectionError(Exception):
+    CODE = "[ERR0002]"
     db_config = dict()
 
     def __init__(self, db_config):
         self.db_config = db_config
 
     def __str__(self):
-        return self.MSG + " DB Config dictionary : {}".format(self.db_config)
+        return self.CODE + " DB 접속정보 오류 발생.. "

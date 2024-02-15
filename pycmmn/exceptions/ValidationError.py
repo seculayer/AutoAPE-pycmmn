@@ -5,8 +5,7 @@
 
 
 class ValidationError(Exception):
-    CODE = "E0006"
-    MSG = "[APEFlow {}]".format(CODE)
+    CODE = "[ERR0010]"
 
     def __str__(self):
-        return self.MSG + "ML Algorithm Validation ERROR!"
+        return self.CODE + "ML Algorithm Validation ERROR!"

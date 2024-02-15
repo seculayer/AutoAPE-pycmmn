@@ -5,12 +5,11 @@
 
 
 class DynamicClassModuleNotExist(Exception):
-    CODE = "E0001"
-    MSG = "[pycmmn {}]".format(CODE)
+    CODE = "[ERR0003]"
 
     def __init__(self, class_nm):
         Exception.__init__(self)
         self.class_nm = class_nm
 
     def __str__(self):
-        return self.MSG + " Class file Not Found ... Check {}.py or {}.pyc file!".format(self.class_nm, self.class_nm)
+        return self.CODE + " Class를 찾을 수 없습니다... {}.py 또는 {}.pyc 파일을 확인하세요!".format(self.class_nm, self.class_nm)

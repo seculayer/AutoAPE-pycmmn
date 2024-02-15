@@ -58,13 +58,17 @@ class SFTPClientManager(object):
                     break
                 else:
                     if dataset_format == Constants.DATASET_FORMAT_TEXT:
-                        yield json.loads(data)
+                        try:
+                            yield json.loads(data)
+                        except json.decoder.JSONDecodeError as e:
+                            self.logger.error(f"data line : {data}")
+                            self.logger.error(e, exc_info=True)
                     elif dataset_format == Constants.DATASET_FORMAT_IMAGE:
                         file_path = filename.rsplit('/', 1)[0]
                         json_data: Dict = json.loads(data)
                         img_byte: bytes = self._read_image_binary(file_path, json_data)
                         img_data: np.array = ImageUtils.load(img_byte)
-                        img_data = img_data.tolist()
+                        # img_data = img_data.tolist()
 
                         json_data["image"] = img_data
                         yield json_data
@@ -93,6 +97,12 @@ class SFTPClientManager(object):
 
     def scp_from_storage(self, remote_path, local_path):
         self.sftp_client.scp_from_storage(remote_path, local_path)
+
+    def get_file_list(self, dir_path):
+        return self.sftp_client.get_file_list(dir_path)
+
+    def delete_file(self, file_path):
+        self.delete_file(file_path)
 
 
 if __name__ == '__main__':

@@ -5,5 +5,10 @@
 
 
 class PySFTPAuthException(Exception):
+    CODE = "[ERR0009]"
+
+    def __init__(self, con_info_dict: dict):
+        self.info_dict = con_info_dict
+
     def __str__(self):
-        return "[ERROR-C0001] Authentication failed. check username and password!"
+        return f"{self.CODE} Authentication failed. check username and password! {self.info_dict}"

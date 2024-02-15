@@ -5,8 +5,7 @@
 
 
 class TFBackendError(Exception):
-    CODE = "E0002"
-    MSG = "[APEFlow {}]".format(CODE)
+    CODE = "ERR0010"
 
     def __str__(self):
-        return self.MSG + " ALGORITHM VERSION 이 맞지 않습니다. Multi 알고리즘의 TensorFlow 버전을 확인해 주세요."
+        return self.CODE + " ALGORITHM VERSION 이 맞지 않습니다. Multi 알고리즘의 TensorFlow 버전을 확인해 주세요."

@@ -5,12 +5,11 @@
 
 
 class NotSupportTypeError(Exception):
-    CODE = "E0003"
-    MSG = "[APEFlow {}]".format(CODE)
+    CODE = "[ERR0007]"
     TYPE = "None"
 
-    def __init__(self, algorithm_type):
-        self.TYPE = algorithm_type
+    def __init__(self, data_type):
+        self.TYPE = data_type
 
     def __str__(self):
-        return self.MSG + " this algorithm NOT SUPPORT {} type".format(self.TYPE)
+        return self.CODE + " This Type({}) is NOT SUPPORTED".format(self.TYPE)

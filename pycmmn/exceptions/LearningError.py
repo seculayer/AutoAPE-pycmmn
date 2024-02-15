@@ -5,8 +5,7 @@
 
 
 class LearningError(Exception):
-    CODE = "E0004"
-    MSG = "[APEFlow {}]".format(CODE)
+    CODE = "[ERR0004]"
 
     def __str__(self):
-        return self.MSG + "ML Algorithm Learning ERROR!"
+        return self.CODE + "ML Algorithm Learning ERROR!"
