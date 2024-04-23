@@ -276,3 +276,8 @@ class RestManager(object, metaclass=Singleton):
     def update_detect_status(rest_url_root: str, logger: MPLogger.getLogger, detect_hist_no, status):
         url = rest_url_root + Common.REST_URL_DICT.get("detect_status_update", "")
         return RestManager.get(f"{url}?detect_hist_no={detect_hist_no}&detect_status_cd={status}&use_yn=Y", logger)
+
+    @staticmethod
+    def update_patch_status(rest_url_root: str, logger: MPLogger.getLogger, learn_hist_no, status):
+        url = rest_url_root + Common.REST_URL_DICT.get("patch_status_update", "")
+        return RestManager.get(f"{url}?learn_hist_no={learn_hist_no}&patch_status_cd={status}", logger)
