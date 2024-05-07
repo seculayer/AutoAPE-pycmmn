@@ -12,6 +12,7 @@ class Constants(object, metaclass=Singleton):
 
     JOB_TYPE_LEARN = "learn"
     JOB_TYPE_INFERENCE = "inference"
+    JOB_TYPE_REINFORCE = "reinforce"
 
     DATASET_FORMAT_TEXT = "1"
     DATASET_FORMAT_IMAGE = "2"
