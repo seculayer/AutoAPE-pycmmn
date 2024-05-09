@@ -21,5 +21,10 @@
     "get_learn_hist_as_detect_hist": "/mims/get_learn_hist_no",
     "get_result_fields": "/mims/get_result_fields",
     "get_detect_model_threashold": "/mims/get_detect_model_threashold",
-    "detect_status_update": "/mims/update_detect_status"
+    "detect_status_update": "/mims/update_detect_status",
+    "patch_status_update": "/mims/update_patch_status",
+
+    "rein_time_update" : "/mims/rein_time_update",
+    "rein_status_update" : "/mims/update_rein_status",
+    "get_rein_status_cd" : "/mims/get_rein_status_cd"
 }

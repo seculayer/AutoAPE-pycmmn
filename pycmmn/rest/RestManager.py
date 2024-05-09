@@ -56,6 +56,8 @@ class RestManager(object, metaclass=Singleton):
     def get_status_cd(rest_url_root: str, logger: MPLogger.getLogger, job_type: str, job_key: str) -> str:
         if job_type == Constants.JOB_TYPE_LEARN:
             url = rest_url_root + Common.REST_URL_DICT.get("get_status_cd", "")
+        elif job_type == Constants.JOB_TYPE_REINFORCE:
+            url = rest_url_root + Common.REST_URL_DICT.get("get_rein_status_cd", "")
         else:  # job_type == Constants.JOB_TYPE_INFERENCE:
             url = rest_url_root + Common.REST_URL_DICT.get("get_infr_status_cd", "")
         hist_no = job_key.split("_")[-1]
@@ -95,6 +97,8 @@ class RestManager(object, metaclass=Singleton):
     def update_status_cd(rest_url_root: str, logger: MPLogger.getLogger, job_type: str, status: str, job_key: str, task_idx: str, msg: str) -> rq.Response:
         if job_type == Constants.JOB_TYPE_LEARN:
             url = rest_url_root + Common.REST_URL_DICT.get("learn_status_update", "")
+        elif job_type == Constants.JOB_TYPE_REINFORCE:
+            url = rest_url_root + Common.REST_URL_DICT.get("rein_status_update", "")
         else:  # job_type == Constants.JOB_TYPE_INFERENCE:
             url = rest_url_root + Common.REST_URL_DICT.get("infr_status_update", "")
         hist_no = job_key.split("_")[-1]
@@ -178,6 +182,8 @@ class RestManager(object, metaclass=Singleton):
     def update_time(rest_url_root: str, logger: MPLogger.getLogger, job_type: str, job_key: str, _type: str):
         if job_type == Constants.JOB_TYPE_LEARN:
             url = rest_url_root + Common.REST_URL_DICT.get("time_update", "")
+        elif job_type == Constants.JOB_TYPE_REINFORCE:
+            url = rest_url_root + Common.REST_URL_DICT.get("rein_time_update", "")
         else:  # job_type == Constants.JOB_TYPE_INFEREN:
             url = rest_url_root + Common.REST_URL_DICT.get("infr_time_update", "")
 
@@ -276,3 +282,8 @@ class RestManager(object, metaclass=Singleton):
     def update_detect_status(rest_url_root: str, logger: MPLogger.getLogger, detect_hist_no, status):
         url = rest_url_root + Common.REST_URL_DICT.get("detect_status_update", "")
         return RestManager.get(f"{url}?detect_hist_no={detect_hist_no}&detect_status_cd={status}&use_yn=Y", logger)
+
+    @staticmethod
+    def update_patch_status(rest_url_root: str, logger: MPLogger.getLogger, learn_hist_no, status):
+        url = rest_url_root + Common.REST_URL_DICT.get("patch_status_update", "")
+        return RestManager.get(f"{url}?learn_hist_no={learn_hist_no}&patch_status_cd={status}", logger)

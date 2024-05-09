@@ -5,6 +5,7 @@
 import json
 from typing import List, Dict
 import numpy as np
+import pickle
 
 from pycmmn.sftp.PySFTPClient import PySFTPClient
 from pycmmn.utils.ImageUtils import ImageUtils
@@ -33,6 +34,31 @@ class SFTPClientManager(object):
 
     def close(self) -> None:
         self.sftp_client.close()
+
+    def load_pickle_data(self, filename):
+        pickle_data = None
+        f = None
+        try:
+            f = self.get_client().open(filename, "rb")
+            pickle_data = pickle.load(f)
+        except Exception as e:
+            self.logger.error(e, exc_info=True)
+            self.logger.error(f"file read path : {filename}")
+        finally:
+            f.close()
+
+        return pickle_data
+
+    def write_pickle_data(self, filename, dict_obj) -> None:
+        f = None
+        try:
+            f = self.get_client().open(filename, "wb")
+            pickle.dump(dict_obj, f)
+        except Exception as e:
+            self.logger.error(e, exc_info=True)
+            self.logger.error(f"file write path : {filename}")
+        finally:
+            f.close()
 
     def load_json_data(self, filename):
         json_data = None
